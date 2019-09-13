@@ -1,0 +1,22 @@
+{
+  "name": "ts-decorator-sample",
+  "version": "1.0.0",
+  "description": "TypeScriptのDecoratorを使ったサンプルです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hikaru7719/ts-decorator-sample.git"
+  },
+  "author": "Hikaru Miyahara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hikaru7719/ts-decorator-sample/issues"
+  },
+  "homepage": "https://github.com/hikaru7719/ts-decorator-sample#readme",
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
+}
