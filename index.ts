@@ -1,18 +1,46 @@
 @create
-class Sample {
-  @access()
-  sampleField: number;
-  constructor(num: number) {
-    this.sampleField = num;
+class Adding {
+  @f()
+  baseNumber: number;
+  constructor(baseNumber: number) {
+    this.baseNumber = baseNumber;
+  }
+
+  @must(2)
+  add(plus: number) {
+    return (this.baseNumber += plus);
   }
 }
 
 function create(constructor: Function) {
   console.log("New Instance");
 }
-function access() {
-  return function(target?: any, propertyKey?: string) {
-    console.log("field accessed");
+
+function access(propertyKey: string) {
+  console.log("field accessed");
+}
+
+function f() {
+  console.log("f(): evaluated");
+  return (target: Object, propertyKey: string) => {
+    console.log("f(): called");
   };
 }
-var smaple = new Sample(1);
+
+function must(num: number) {
+  return (
+    target: Object,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) => {
+    console.log((<Adding>target).add(1));
+    // const addFunc = descriptor.value;
+    // addFunc.bind(Object);
+    // descriptor.value = () => {
+    //   return addFunc() * num;
+    // };
+  };
+}
+const adding = new Adding(1);
+
+console.log(adding.add(1));
