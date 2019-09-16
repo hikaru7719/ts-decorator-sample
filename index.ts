@@ -1,7 +1,7 @@
 console.log("start of class definition\n");
-@create
+@classDecorators
 class Adding {
-  @access
+  @propertyDecorators
   baseNumber: number;
   constructor(baseNumber: number) {
     this.baseNumber = baseNumber;
@@ -13,12 +13,12 @@ class Adding {
   }
 }
 console.log("end of class definition\n");
-function create(constructor: Function) {
-  console.log("create\n");
+function classDecorators(constructor: Function) {
+  console.log("class\n");
 }
 
-function access(target: Object, propertyKey: string) {
-  console.log("access\n");
+function propertyDecorators(target: Object, propertyKey: string) {
+  console.log("property\n");
 }
 
 function multiply(num: number) {
@@ -27,9 +27,9 @@ function multiply(num: number) {
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) => {
-    console.log("multiply\n");
+    console.log("method\n");
     const addFunc = descriptor.value;
-    descriptor.value = function(...args: any) {
+    descriptor.value = function(...args: any[]) {
       const result = addFunc.apply(this, args);
       return result * num;
     };
